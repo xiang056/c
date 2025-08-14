@@ -1,0 +1,1332 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <string.h>
+#include <math.h>
+#include <time.h>
+#include <conio.h>
+
+/*int main()
+{
+    int math , eng , chem , sum;
+    math = eng = chem = 78;
+    math = math + 5;
+    sum = math + eng + chem;
+    printf("數學加權後成績為:%d" , math);
+    printf("\n總分為:%d", sum);
+
+    return 0;
+}
+
+
+
+int main()
+{
+    int a , b , c;
+    printf("請輸入除數(整數):");
+    scanf("%d" , &a);
+    printf("請輸入被除數(整數):");
+    scanf("%d" , &b); 
+    c = b / a;
+    float d = b % a;
+    printf("商:%d，餘:%f" , c , d);
+
+    return 0;
+}
+    
+
+
+int main()
+{
+    float x,y;
+    printf("請輸入兩數:");
+    scanf("%f",&x);
+    scanf("%f",&y);
+    printf("兩數相乘積為:%f",x * y);
+
+    return 0;
+}
+    
+
+int main(){
+
+
+    printf("short size : %d Byte\n" , sizeof(short));
+    printf("long size: %d Byte\n", sizeof (long));
+
+    return 0;
+}
+//陣列
+int main(){
+
+    int i_array2D [] [3] = {
+
+                                {1,2,3},
+                                {3,4,5},
+                                {5,6,7}
+                            };
+
+    printf ("%d %d %d \n %d %d %d \n %d %d %d \n" ,  i_array2D [0] [0] ,  i_array2D [0] [1] ,  i_array2D [0] [2] ,
+                                                     i_array2D [1] [0] ,  i_array2D [1] [1] ,  i_array2D [1] [2] ,
+                                                     i_array2D [2] [0] ,  i_array2D [2] [1] ,  i_array2D [2] [2]
+                                                    );
+    printf("%d\n" , sizeof ( i_array2D));
+
+
+    return 0;
+    
+}
+    
+
+//string 字串
+int main(){
+    //char str_1D[] = "hello world";
+    //printf("%s\n ", str_1D);
+    //printf("%d\n" , sizeof(str_1D));   字串後size都會加一個\0 所以都要+1
+    //printf("%c %c %c\n", str_1D[0] , str_1D[1] , str_1D[2]);
+    //str_1D[1]  = 'b';
+    //printf("%s\n ", str_1D);
+    char str_2D[][6] = {
+                        "abc\n",
+                        "def\n",
+                        "ghi\n",
+
+                        };
+                        
+    printf("%s %s %s\n" , str_2D[0], str_2D[1] , str_2D[2]);
+    printf("%d\n" , sizeof(str_2D));
+
+    return 0;
+
+}
+    
+
+
+int main(){
+
+    int a = 12855;
+    float PI = 3.14159;
+    printf("%x\n" , a);
+    
+    char b = 'c';
+    printf("%c\n" , b);
+
+    char str [] = "abc";
+    printf("%s", str);
+    return 0;
+}
+
+
+
+int main(){
+    char s [5];
+    int a;
+    float PI;
+    printf("請輸入3數值");
+    //scanf("%s , %d , %f" , s , &a , &PI);
+    //printf("out = %s , %d , %f" , s , a, PI);
+
+    char input [20] = "dff  55  3.14";
+    sscanf(input,"%s , %d , %f" , s , &a, &PI);
+    printf("out = %s , %d , %f" , s , a, PI);
+    return 0;
+    
+
+
+}
+    
+//gets可以空格
+//scanf不可接受空格
+int main(){
+    char str[80];
+    gets(str);
+    printf("out = %s" , str);
+
+    return 0;
+
+}
+    
+
+//puts 輸出後自動換行
+int main(){
+    char str1[] = "hello world";
+    char str2[] = "hello！";
+    puts(str1);
+    puts(str2);
+
+    return 0;
+}
+
+
+
+int main(){
+    char str[50];
+    fgets(str , 50 , stdin);
+    printf("out = %s" , str);
+
+    return 0;
+
+}
+
+int main(){
+    int a = 5;
+    printf("a = %d\n" , a);
+    int b = a++;   
+    printf("(a++) * 4 = %d \n", b * 4);
+    a = 5;
+    int c = ++a;
+    printf("(++a) * 4 = %d ", c * 4);
+    return 0;
+}
+
+
+int main(){
+
+    int a , b;
+    printf("請輸入a值:");
+    scanf("%d" , &a );
+    printf("請輸入b值:");
+    scanf("%d" , &b );
+
+    printf("a > b 的結果為: %d\n" , (a > b));
+    printf("a == b的結果為: %d\n" , (a == b));
+    printf("a < b 的結果為: %d\n" , (a < b));
+    
+
+    return 0;
+
+
+}
+    
+
+
+int main(){
+    int a = 8 , b = 2 , c = 9 , d = 2;
+    printf("a = %d , b = %d , c = %d , d = %d\n" , a , b ,c , d);
+    printf("a > b & c > d 的結果為:%d\n" , (a > b & c > d));
+    printf("a < b | c < d 的結果為:%d\n" , (a < b | c < d));
+    printf("a > b ^ c > d 的結果為:%d\n" , (a > b ^ c >d));
+    printf("! ( a < b) 的結果為:%d\n" , !(a < b));
+
+    return 0;
+}
+    
+
+
+int main(){
+    int grades1 , grades2 , grades3 , sum = 0; 
+    printf("請輸入第一科成績:");
+    scanf("%d" , &grades1);
+    sum += grades1;
+    printf("請輸入第二科成績:");
+    scanf("%d" , &grades2);
+    sum += grades2;
+    printf("請輸入第三科成績:");
+    scanf("%d" , &grades3);
+    sum += grades3;
+
+    printf("總成績為:%d" , sum);
+
+    return 0;
+
+}
+    
+
+//size表示為 型別 變數 = sizeof(型別)
+// if a = short , b = int
+//a + b = 4(記憶體大小)*自動型別轉換為值郁較大者，也就是int，所以記憶體大小為4
+
+int main(){
+    short a;
+    int b;
+    printf("變數a記憶體大小為: %d\n" , sizeof(a));
+    printf("變數b記憶體大小為: %d\n" , sizeof(b));
+    printf("a + b的記憶體大小為: %d\n", sizeof(a+b));
+
+    return 0;
+}
+
+
+//條件運算子
+//判斷奇偶數
+//strcpy 是 C 語言中用來複製字串的標準函式，定義於標頭檔 <string.h>
+//strcpy用法 char *strcpy(char *destination, const char *source);
+//destination：目標字元陣列，字串將被複製到這裡。
+//source：來源字串，會被複製到目標陣列。
+//在 C 語言中，不能用等號 = 直接把一個字串指派給陣列。
+
+int main(){
+    int a;
+    char s[20];
+    printf("請輸入一整數:");
+    scanf("%d",&a);
+    strcpy(s, (a%2)==0 ? "偶數" : "奇數");//根據輸入的數判斷
+    printf("你輸入的數為: %s\n",s);//顯示結果
+
+    return 0;
+
+}
+
+
+
+
+int main(){
+    int money = 0 , late;
+    printf("請輸入遲到幾分鐘");
+    scanf("%d",&late);
+    if (late >= 20)  //如果遲到大於20min
+    {
+        money += 30;
+    }
+    
+    printf("你的罰款為:%d 元",money);
+
+    return 0;
+}
+
+
+
+int main(){
+    float high ,weight;
+    printf("請輸入身高(公分):");
+    scanf("%f",&high);
+    printf("請輸入體重(公斤):");
+    scanf("%f",&weight);
+
+    if ((high-110) < weight)
+    {
+        printf("體重過重!該減肥");
+    }
+
+    else
+    {
+        printf("恭喜，體重未過重!");
+    }
+    
+    return 0;
+}
+
+
+
+int main(){
+    float weight , high , bmi;
+    printf("請輸入體重(公斤)");
+    scanf("%f",&weight);
+    printf("請輸入身高(公尺)");
+    scanf("%f", &high);
+
+    bmi = weight/(high*high);
+    if ( bmi < 18.5 )
+    {
+        printf("體重過輕!");
+    }
+
+    else if ( bmi <= 24)
+    {
+        printf("體重適中!");
+    }
+
+    else
+    {
+        printf("體重過重!");
+    }
+    
+    return 0;
+}
+
+
+
+//switch...case....只能判斷整數或字串條件式，使用限制較多。
+
+int main(){
+    char grades;
+
+    printf("請輸入英文等第(A-E):");
+    scanf("%s",&grades);
+
+    switch (grades)
+    {
+    case 'A':
+        printf("你的等第為「甲」");
+        break;
+    
+    case 'B':
+        printf("你的等第為「乙」");
+        break;
+    
+    case 'C':
+        printf("你的等第為「丙」");
+        break;
+    
+    case 'D':
+        printf("你的等第為「丁」");
+        break;
+
+    case 'E':
+        printf("你的等第為「戊」");
+        break;
+    default:
+        printf("無此等第!");
+        break;
+    }
+
+    return 0;
+}
+    
+
+int main(){
+    int grades;
+    char s[20];
+    printf("請輸入成績:");
+    scanf("%d", &grades);
+
+    strcpy(s, grades >= 60 ? "及格" : "不及格");
+    printf("你的成績:%s",&s);
+
+    return 0;
+
+}
+    
+//for固定次數 while、do...while不固定次數迴圈
+//for (變數初始值;條件判斷;增量值)  //初始值迴圈外宣告可省略，但分號不可
+
+int main(){
+    int i = 0;
+    for (; i < 10; i++)
+    {
+        printf(" %d\n" , i);
+    }
+
+    return 0;
+}
+    
+
+int main(){
+    int sum = 1;
+    for (int i = 1; i <= 5; i++)
+    {
+        sum *= i;
+        printf("i = %d!,%d!=%d\n",i,i,sum);
+    }
+    
+    return 0;
+}
+    
+
+int main(){
+    int sum = 0 , cost = 0;
+    
+    for (int i = 1; i <= 7; i++)
+    {
+        printf("週%d花費:", i);
+        scanf("%d" , &cost);
+        sum += cost;
+    }
+    printf("一週總花費為:%d元", sum);
+
+    return 0;
+}
+    
+
+int main(){
+    for (int i = 1; i <= 5; i++)//外部迴圈執行5次
+    {
+        printf("外部第 %d 次迴圈, 內部執行 %d 次迴圈",i,i);
+        for (int j = 1; j <= i; j++)//內部迴圈
+        {
+            printf("#");
+        }
+        printf("\n");
+    }
+    
+    return 0;
+}
+    
+
+//比較迴圈外及區塊變數內宣告的變數，並顯示該值。
+
+int main(){
+    int i = 100 , a = 10;
+    for (int i = 1; i < 5; i += 2)
+    {
+        printf("區塊變數 i = %d , ", i);
+        a++;
+        printf("變數 a = %d\n", a);
+    }
+    printf("結束迴圈後的 i = %d, a = %d", i , a);
+
+    return 0;
+}
+    
+
+//while (條件判斷)
+int main(){
+
+int n = 1, sum = 0;
+while (n <= 100)
+{
+    sum += n;
+    n +=2;
+}
+printf("1+3+5+...+99= %d" , sum);
+return 0;
+}
+
+//  do...while 先執行迴圈內的程式區塊後才執行條件判斷，稱「後測試迴圈」
+//  do{
+//  程式敘述;
+//  ....
+//  }while(條件判斷);    **密碼常用
+
+//預設的密碼為「1234」，使用者若輸入的密碼錯誤，將不斷出現輸入密碼訊息，直到輸入的密碼正確才顯示正確訊息。
+
+int main(){
+    char password[30];
+    do
+    {
+        printf("請輸入密碼:");
+        scanf(" %s",&password);
+    } while (strcmp(password,"1234"));
+    printf("登入!");
+
+    return 0;
+}
+    
+
+//break指令用在迴圈
+
+int main(){
+    int  n;
+    printf("輸入井字三角形的高(2-6)");
+    scanf(" %d",&n);
+    for (int i = 1; i <= 6; i++)
+    {
+        if (i > n)
+        break;
+        for (int j = 1; j <= i; j++)
+        {
+            printf("#");
+        }
+        
+        printf("\n");
+        }
+        
+        return 0;
+}
+
+
+//輸入大樓的樓層後，如果是三層以下，會正常顯示樓層命名;如果是四層(含)以上，顯示樓層命名時會跳過四樓不顯示。
+
+int main(){
+    int floor = 0,n;
+    printf("請輸入本大樓的樓層:");
+    scanf(" %d",&n);
+    printf("本大樓具有的樓層為:");
+    while (floor <= n)
+    {
+        floor ++;
+        if (floor == 4)
+        {
+            continue;
+        }
+
+        printf("%d ",floor);
+    }
+    
+    return 0;
+}
+    
+
+//一維陣列宣告
+//資料型別 陣列名稱 [陣列長度]; ex: int num[3];
+
+int main(){
+    int n [5];
+    printf("int 陣列元素佔 %d 個位元組",sizeof(n[0]));
+    printf("\n整個 int 陣列佔 %d 個位元組",sizeof(n));
+    printf("\n陣列元素個數 %d",sizeof(n)/sizeof(n[0]));
+
+    return 0;
+}
+    
+
+//使用陣列儲存使用者輸入的各科成績，並計算總分顯示出來。
+
+int main(){
+    int grades [3] , sum = 0;
+    printf("請輸入國文成績: ");
+    scanf("%d",&grades[0]);
+    sum += grades[0];
+    
+    printf("請輸入數學成績: ");
+    scanf("%d",&grades[1]);
+    sum += grades[1];
+
+    printf("請輸入英文成績: ");
+    scanf("%d",&grades[2]);
+    sum += grades[2];
+
+    printf("總分為: %d 分", sum);
+
+    return 0;
+}
+
+//建立一個包含四個元素的整數陣列，讓使用者輸入四個數值，然後顯示所有輸入值及其中的最大數。
+
+int main(){
+    const int c = 4;
+    int n[c] , 1;
+    for (int i = 0; i < c; i++)
+    {
+        printf("請輸入第 %d 個數:", i+1 );
+        scanf(" %d",&n[i]);
+    }
+    
+    max = n[0];
+    for (int i = 1; i < c; i++)
+    {
+        if(n[i] > max)
+        {
+            max = n[i];
+        }
+    }
+    printf("輸入的數: ");
+    for (int i = 0; i < c; i++)
+    {
+        printf("%d ",n[i]);
+    }
+    printf("\n最大數: %d\n",max);
+
+    return 0;
+    
+}
+
+//輸入客人購買貨品的價格，最多可輸入五件，如果輸入負數表示輸入結束，最後計算全部貨品總價。
+
+int main()
+{
+    const int c = 5;
+    int price[c] , sum = 0, i = 0 , n;
+
+    do
+    {
+        if (i == c)
+        {
+            printf("輸入品項已達上限\n");
+            
+            break;
+        }
+    
+        printf("請輸入第 %d 件商品:",i+1);
+        scanf("%d",&price[i]);
+        i++;
+    
+    } while (price[i-1] >= 0); //輸入負數表示結束
+    n = i-1; //n為實際輸入件數
+    for ( i = 0; i < n; i++) //計算總價
+    {
+        sum += price[i];
+    }
+    
+    printf("總價: %d 元\n",sum);
+
+    return 0;
+}
+
+//泡沫排序-建立一個整數陣列並設定初使值為班級成績，先顯示原始成績，再將成績由大到小排序後顯示出來。
+
+int main()
+{
+    int score[] = {87, 78, 98, 65, 85, 72};
+    int student = sizeof(score) / sizeof(score[0]);
+    printf("排序前成績:\n");
+    for (int i = 0; i < student; i++)
+    {
+        printf("%d ",score[i]);
+    }
+    
+    for (int i = 0; i < student - 1; i++) //陣列排序  共跑幾輪
+    {
+        for (int j = 0; j < student - i - 1; j++)
+        {
+            if (score[j] < score[j + 1])
+            {
+                int x = score[j]; //交換
+                int y = score[j + 1];
+                score[j] = y;
+                score[j + 1] = x;
+            }
+            
+        }
+        
+    }
+    
+    printf("\n由大到小排序後\n");
+    for (int i = 0; i < student; i++)
+    {
+        printf("%d ",score[i]);
+    }
+    
+    return 0;
+    
+}
+
+//循序搜尋 建立一個包含1000個數字的陣列，程式會檢查使用者輸入的數字是否在陣列中並顯示比對的次數。
+
+int main()
+{
+    int array[1000] , num , i;
+    int Isfound = 0;
+    for ( i = 0; i < 1000; i++)
+    {
+        array[i] = 3*i+1;
+        array[500+i] = 3*i+2;
+    }
+    
+    printf("請輸入查詢數字:");
+    scanf("%d",&num);
+    for ( i = 0; i < 1000; i++)
+    {
+        if (array[i] == num)
+        {
+            Isfound = 1;
+            i++;
+            break;
+        }
+    }
+    
+    if (Isfound == 1)
+    {
+        printf("%d 在數字陣列中\n", num);
+    }
+
+    else
+        printf("%d 不在數字陣列中\n", num);
+    
+    printf("共比對 %d 次",i);
+
+    return 0;
+}
+
+//二分搜尋 與前例相同
+
+int main()
+{
+    int array[1000],input,i;
+    int Isfound = 0;
+
+    for ( i = 0; i < 500; i++)
+    {
+        array[i] = 3*i+1;
+        array[500+i] = 3*i+2;
+    }
+    
+    printf("請輸入查詢數字:");
+    scanf("%d",&input);
+    
+    for ( i = 0; i < 999; i++)
+    {
+        for ( int j = 0; j < 999-i;j++)
+        {
+            if (array[j] > array[j+1])
+            {
+                int temp = array[j];
+                array[j] = array[j+1];
+                array[j+1] = temp;
+            }
+        }
+    }
+    int min,max,mid,search;
+    min = 0;
+    max = 999;
+    search = 1;
+
+    while (min <= max)
+    {
+        mid = (min + max) / 2;
+        
+        if (array[mid] == input)
+        {
+            Isfound = 1;
+            search++;
+            break;
+        }
+        
+        search++;
+        
+        if (array[mid] > input)
+        {
+            max = mid - 1;
+        }
+        else
+            min = mid + 1;
+    }
+    
+    if (Isfound == 1)
+    {
+        printf("%d 在數字陣列中",input);
+    }
+    else
+        printf("%d 不在數在陣列中",input);
+    
+    printf("\n(共比對 %d 次)", search-1);
+    
+    return 0;   
+}
+
+//建立一個二維陣列儲存所有業績，並計算每個業務員的總業績及統計每個月的業績總額。
+
+int main()
+{
+    int sale[3][4] ={  {32000 , 87000 , 76000 , 100000},
+                       {56000 , 12000 , 58300 , 67000},
+                       {12000 , 43000 , 96000 , 80000} };
+    int month[4],person [3];
+    for (int i = 0; i < 4; i++)//計算各月的業績總額
+    {
+        month[i]=0;
+        for (int j = 0; j < 3; j++)
+        {
+            month[i] += sale[j][i];           
+        }
+        printf("%d 月的業績總額為 %d 元\n" , i+1 , month[i]);
+    }
+
+    for (int i = 0; i < 3; i++)
+    {
+        person [i] = 0;
+        for (int j = 0; j < 4; j++)
+        {
+            person[i] += sale[i][j];           
+        }
+        printf("第 %d 位的業務員總額為 %d 元\n", i+1, person[i]);
+    }
+    
+    return 0;
+}
+
+int main()
+{
+    char s[] = "learn C/C++",s2 = 'a' , s3[] = "a";
+    printf("\"learn C/C++\"佔 %d 個位元組\n",sizeof(s));
+    printf("\'a\' 佔 %d 個位元組\n",sizeof(s2));
+    printf("\"a\" 佔 %d 個位元組\n",sizeof(s3));
+
+    return 0;
+}
+
+//使用者輸入可包含空白字元的字串，顯示加密後的字串，加密的原則是將每個字元的ACS||碼加1。
+
+int main()
+{
+    char pw[20];
+    printf("請輸入密碼(可包含空白鍵): ");
+    gets(pw);
+    puts(pw);
+
+    for (int i = 0; i < strlen(pw); i++)
+    {
+        pw[i]++;
+        printf("%c",pw[i]);
+    }
+    
+    return 0;
+}
+
+int main()
+{
+    char pw[20];
+    printf("請輸入加密後的密碼: ");
+    gets(pw);
+    puts(pw);
+    
+    printf("解密後的密碼為: ");
+    for (int i = 0; i < strlen(pw); i++)
+    {
+        pw[i]--;
+        printf("%c",pw[i]);
+    }
+    
+    return 0;
+}
+
+//讓使用者輸入三個學生名字，將名字存於字串陣列中，再逐一顯示陣列中學生姓名。
+
+int main()
+{
+    char name[3][9];
+    for (int i = 0; i < 3; i++)
+    {
+        printf("請輸入第 %d 個學生姓名: ",i+1);
+        scanf("%8s",&name[i]);
+    }
+    
+    for (int i = 0; i < 3; i++)
+    {
+        printf("第 %d 個學生姓名: %s",i+1 , name[i]);
+    }
+    
+    return 0;
+}
+
+    void input(int n,int chinese,int math)
+{
+    printf("第 %d 位學生國文成績: ",n);
+    scanf("%d",&chinese);
+    printf("第 %d 位學生數學成績: ",n);
+    scanf("%d",&math);
+}
+
+int main()
+{
+    int chi[3],mat[3];
+    input(1, chi[0], mat[0]);
+    input(2, chi[1], mat[1]);
+    input(3, chi[2], mat[2]);
+
+    return 0;
+}
+
+//建立華氏溫度轉攝氏溫度的函示，輸入華氏溫度就會顯示攝氏溫度。
+
+float temperature(float value)
+{
+    return (value -32)*5/9;
+}
+
+int main()
+{
+    float value, result;
+    printf("請輸入華氏溫度: ");
+    scanf("%f",&value);
+    result = temperature(value); //呼叫函式並傳回值給變數result
+    printf("攝氏溫度: %.2f",result);
+}
+
+//自鍵盤輸入一個數字n，顯示1到n數字。
+//void 函式名稱(參數列表) 
+{
+}
+
+void num(int n)
+{
+    int i =1;
+    while (1)
+    {
+        if (i > n)
+        {
+            return;
+        }
+        
+        printf("%d ", i);
+        i++;
+}
+}
+int main()
+{
+    int n;
+    printf("請輸入數字 n: ");
+    scanf("%d",&n);
+    num(n);
+    printf("\n");
+
+    return 0;
+}
+
+void add20(int);
+int main()
+{
+    int a;
+    printf("請輸入變數 a 的值:");
+    scanf("%d",&a);
+    printf("執行函式前主程式 a 的值: %d",a);
+
+    add20(a);
+    printf("\n執行函式後主程式變數 a 的值: %d",a);
+    
+    return 0;
+}
+
+void add20(int a) //參數值加20  
+{
+    printf("\n傳送給函式形式參數 a 的值: %d\n",a);
+    a += 20;
+    printf("\n函式中最後形式參數 a 的值: %d\n",a);
+}
+
+//以陣列儲存學生成績，再以陣列元素及整個陣列當作參數，使用函式來顯示個人或全部學生成績觀察陣列傳遞變化。
+
+int main()    //未使用函式版(自己想的)
+{
+    int scores[] = {98,60,74,86,50,92};
+    int a = sizeof(scores) / sizeof(scores[0]);
+    int num;
+    printf("輸入學生座號(1-6,0表示全部): " );
+    scanf("%d" , &num);
+    if (num == 0)
+    {
+        printf("全部學生的成績:");
+        for (int i = 0; i < a; i++)
+        {
+            printf("%d ",scores[i]);
+        }
+    }
+    else
+        printf("%d 號學生成績: %d" ,num,scores[num-1]);
+        
+    return 0;
+}
+
+void showall(int a[], int);//顯示全部成績
+void showone(int ,int);//顯示單一成績
+int main()
+{
+    int scores[] = {98,60,74,86,50,92};
+    int a = sizeof(scores) / sizeof(scores[0]);
+    int num;
+    printf("輸入學生座號(1-6,0表示全部): " );
+    scanf("%d" , &num);
+    if (num == 0)
+    {
+        showall(scores,a); //傳送陣列及元素個數
+    }
+    
+    else    
+        showone(num,scores[num-1]);
+
+    return 0;
+}
+
+void showall(int a[], int n) //顯示全部學生成績
+{
+    printf("全部學生成績:");
+    for (int i = 0; i < n; i++)
+    {
+        printf("%d ",a[i]);
+    }
+    printf("\n");
+}
+void showone(int num, int score) //顯示個別成績
+{
+    printf("%d 號學生成績: %d",num,score);
+}
+
+//以二維陣列儲存三位學生成績，再以整個陣列當作參數，使用函式來顯示全部學生的成績。
+
+#define subject 6
+void showall(int a[][subject],int n);
+int main()
+{int score[][subject]={ {98,82,76,89,68,91},
+                       {88,54,79,90,85,67},
+                       {94,69,65,73,91,82} };
+int n = sizeof(score) / sizeof(score[0]);
+showall(score,n);
+
+return 0;
+}
+
+void showall(int a[][subject],int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        printf("%d 號學生成績: ",i+1);
+        for (int j = 0; j < subject; j++)
+        {
+            printf("%d ",a[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+int main()
+{
+    const float pi = 3.14159; 
+    float ang;
+    printf("請輸入角度:");
+    scanf("%f",&ang);
+    printf("%.2f 度的正弦值為: %.2f\n",ang,sin(ang/180*pi));
+    printf("%.2f 度的餘弦值為: %.2f\n",ang,cos(ang/180*pi));
+    printf("%.2f 度的正切值為: %.2f\n",ang,tan(ang/180*pi));
+
+    return 0;
+}
+
+//讓使用者輸入一個數值，程式會根據第一位小數做四捨五入取整數值。
+
+int approximation(float);
+int main()
+{
+    float x;
+    printf("輸入一個浮點數(含小數): ");
+    scanf("%f",&x);
+    printf("%.2f 四捨五入的整數值為: %d\n",x,approximation(x));
+
+    return 0;
+}
+int approximation(float x)
+{
+    return(x+0.5);
+}
+
+
+int main()
+{
+    srand((unsigned int)time(NULL));//以系統時間當亂數種子
+    for (int i = 0; i <= 8; i++)
+    {
+        printf("%d ",rand());
+    }
+    
+    printf("\n");
+    return 0;
+}
+
+//以亂數來模擬骰子遊戲，使用者按下任意鍵就會以亂數產生1~6的點數，若單獨按下enter鍵則會結束。
+
+int main()
+{
+    srand((unsigned int)time(NULL));
+    int n;
+
+    while (1)
+    {
+        printf("請按任意鍵骰骰子");
+        char ch = getch();
+
+        if (ch == '\r')
+        {
+            printf("遊戲結束\n");
+            break;
+        }
+        
+        else
+        {
+            n = 1 + rand() % (6-1+1);
+            printf("點數為: %d 點\n",n);
+        }
+    }
+    
+    return 0;
+}
+
+//使用全域變數執行加分功能。
+
+void add10();
+void add20();
+int score;//宣告全域變數
+
+int main()
+{
+    
+    printf("請輸入原始分數: ");
+    scanf("%d",&score);
+    add10();
+    printf("加10分後分數為: %d 分\n",score);
+    add20();
+    printf("再加20分後分數為: %d 分\n",score);
+
+    return 0;
+}
+
+void add10()
+{
+    score +=10;
+}
+
+void add20()
+{
+    score += 20;
+}
+
+//設定相同名稱的全域變數與區域變數，觀察其變數值的變化。
+void local();
+int score;
+int main()
+{
+    score = 90;
+    printf("全域變數 score 值為: %d\n",score);
+    
+    local();
+
+    printf("全域變數 score 值為: %d\n",score);
+
+    return 0;
+}
+void local()
+{
+    int score = 80;
+    printf("區域變數 score 值為: %d\n",score);
+}
+
+//在不同函式中建立相同名稱的自動變數，觀察其變數值的變化。
+void autol();
+int main()
+{
+    int score = 100;
+    printf("main()中自動變數 score 值: %d\n",score);
+    autol();
+    printf("autol()中自動變數 score 值: %d\n",score);
+    printf("main()中自動變數 score 值: %d\n",score);
+}
+
+void autol()
+{
+    int score = 75;
+    printf("autal()中自動變數 score 值: %d\n",score);
+}
+
+//計算偶數和，觀察靜態變數及自動變數的差異。
+
+int sumauto(int n);
+int sumstatic(int n);
+
+int main()
+{
+    for (int i = 1; i <= 3; i++)
+    {
+        printf("第 %d 次呼叫:\n",i);
+        printf("自動變數: %d，",sumauto(i*2));
+        printf("靜態變數: %d\n",sumstatic(i*2));
+    }
+    return 0;
+}
+
+int sumauto(int n) //自動變數函數
+{
+    int sum=0;
+    sum += n;
+    return sum;
+}
+
+int sumstatic(int n)//宣告靜態變數
+{
+    static int sum;
+    sum += n;
+    return sum;
+}
+
+//使用extern修飾詞，讓使用者以公分為單位輸入身高，將其換算為英呎。
+
+void change(float);
+
+int main()
+{
+    float meter;
+    extern float ratio;
+    printf("1 英呎相當於 %.2f公分\n",ratio);
+    printf("請輸入身高的公分數: ");
+    scanf("%f",&meter);
+
+    change(meter);
+    return 0;
+}
+float ratio = 30.48;
+void change(float meter)
+{
+    printf("%.0f 公分換算為 %.2f 英呎\n",meter,meter / ratio);
+}
+
+//使用靜態外部變數執行加減法功能。
+
+void plus();
+void minus();
+static int n1, n2 , result; //宣告靜態外部變數
+int main()
+{
+    
+    printf("請輸入第一個整數: ");
+    scanf("%d",&n1);
+    printf("請輸入第二個整數: ");
+    scanf("%d",&n2);
+
+    plus();
+    printf("兩數和: %d\n",result);
+    minus();
+    printf("兩數差: %d\n",result);
+
+    return 0;
+}
+void plus()
+{
+    result = n1 + n2;
+}
+
+void minus()
+{
+    result = n1 - n2;
+}
+
+//計算數量龐大巢狀迴圈的執行時間，說明暫存器變數較高的執行效率。
+
+int main()
+{
+    register int i,j; //宣告暫存器變數
+    float sum;
+    time_t start , end; //宣告時間資料型態
+    start =  time(NULL);//紀錄開始時間
+
+    for ( i = 1; i <= 40000; i++)
+    {
+        for ( j = 1; j<= 4000; j++)
+        {
+            sum = sum + j;
+            
+        }
+        end = time(NULL);//紀錄結束時間
+    }
+
+    printf("迴圈執行時間: %.3f 秒\n",difftime(end,start));//difftime為時間差函數
+
+    return 0;
+    
+}
+
+//自鍵盤輸入一個數字n，利用遞迴函式來計算n階層。
+
+int factorial(int);
+int main()
+{
+    int n;
+    printf("請輸入一整數: ");
+    scanf("%d",&n);
+    printf("%d! = %d",n,factorial(n));
+
+}
+
+int factorial(int n)//計算階層
+{
+    if (n == 0)
+    {
+        return 1;
+    }
+    else
+    {
+        return n*factorial(n-1);//遞迴呼叫
+    }
+}
+
+//定義一個尋找較大數的巨集，讓使用者輸入兩個整數後顯示較大的數。
+
+#define MAX(x,y) ((x) >(y)  ?   (x):(y)) //定義巨集
+int main()
+{
+    int x,y;
+    printf("請輸入整數: ");
+    scanf("%d",&x);
+    printf("請輸入整數: ");
+    scanf("%d",&y);
+
+    printf("大數為: %d",MAX(x,y));
+
+    return 0;
+}*/
+
+ int main()
+ {
+    int x = 10;
+    int y = 20;
+
+    printf("變數 x 值 = %d ， 位址 = %x",x,&x);
+
+    return 0;
+ }
