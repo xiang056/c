@@ -1319,7 +1319,7 @@ int main()
     printf("大數為: %d",MAX(x,y));
 
     return 0;
-}*/
+}
 
  int main()
  {
@@ -1329,4 +1329,121 @@ int main()
     printf("變數 x 值 = %d ， 位址 = %x",x,&x);
 
     return 0;
+
  }
+
+ //以指標顯示變數n位址和內容，再顯示指標的位址和內容。
+
+  int main()
+ {
+    int n = 5;
+    int *p = &n;
+    printf("變數 n 的值: %d\n",n);
+    printf("變數 n 的位址: %p\n",&n);
+
+    printf("指標 p 的值: %p\n",p);
+    printf("指標 p 的位址: %p\n",&p);
+
+    return 0;
+ }
+
+ //以指標指向變數後，再改變指標內容指向另一個數。
+
+ int main()
+ {
+    int n = 5, m = 8;
+    int *p = &n;
+    printf("指標指向變數 n 的位址:\n");
+    printf("變數 n 的位址: %p\n",(void*)&n);
+    printf("指標 p 值: %p\n",(void*)p);
+
+    p = &m;
+    printf("指標指向變數 m 的位址:\n");
+    printf("變數 m 的位址: %p\n",(void*)&m);
+    printf("指標 p 的值: %p",(void*)p);
+    
+    return 0;
+ }
+
+ //宣告整數變數 n=5，指標p指向n的位址，讓使用者輸入指標p指向的記憶體內容，再顯示整數變數n的值以觀察其變化。
+
+ int main()
+ {
+    int n = 5;
+    int *p =&n;
+
+    printf("變數 n 的值: %d\n",n);
+    printf("指標 p 指向的記憶體內容: %d\n",*p);
+
+    printf("輸入指標 p 指向的記憶體內容: ");
+    scanf("%d",&*p);
+    
+    printf("改變後變數 n 的值: %d",n);
+
+    return 0;
+ }
+
+ //執行傳址呼叫函式，觀察參數傳遞前後變數值的變化。
+
+ void add(int *);//加入函式原型宣告
+ int main()
+ {
+    int a;
+    printf("請輸入變數 a 的值: ");
+    scanf("%d",&a);
+
+    printf("執行函式前主程式變數 a 的值: %d\n",a);
+    add(&a);
+    printf("執行函式後主程式變數 a 的值: %d\n",a);
+
+    return 0;
+ }
+
+ void add(int *a)
+ {
+    printf("傳送給函式形式參數 a 的值: %d\n",*a);
+    *a += 20;
+    printf("函式中最後形式參數 a 的值: %d\n",*a);
+ }
+
+ //執行傳值呼叫及傳址呼叫的函式，觀察參數傳遞前後變數值的變化。
+
+ void add20(int , int *);
+ int main()
+ {
+    int a = 50 , b = 50;
+    printf("執行函式前主程式變數 a= %d , b= %d\n",a,b);
+    add20(a , &b);
+    printf("執行函式後主程式變數: a = %d, b = %d",a,b);
+
+    return 0;
+ }
+
+ void add20(int a, int *b)
+ {
+    printf("傳送給函式形式參數 a = %d, b = %d\n",a,*b);
+    a += 20;
+    *b +=20;
+    printf("函式中最後形式參數: a = %d, b = %d\n",a,*b);
+ }*/
+
+ //使用回傳指標函式將傳入的參數值加20後傳回。
+
+ int *add20(int *);
+ int main()
+ {
+    int a,*p;
+    printf("請輸入變數 a 的值: ");
+    scanf("%d",&a);
+    p=add20(&a);
+    
+    printf("執行函式後變數 a 的值: %d",*p);
+   
+    return 0;
+ }
+
+ int *add20(int *a)
+ {
+    *a += 20;
+    return a;
+ }  
