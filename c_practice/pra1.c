@@ -1172,7 +1172,7 @@ int main()
     printf("%d 數的平方值為: %d",x,SQUARE(x));
 
     return 0;
-}*/
+}
 
 //宣告兩個字串變數，顯示這兩個變數值和位置。
 
@@ -1185,4 +1185,67 @@ int main()
     printf("字串s2值: %s，位址 = %x",s2,&s2);
     
     return 0;
+
+}
+
+//宣告兩個指標變數分別指向整數及浮點數變數，分別顯示兩個指標內容及記憶體大小。
+
+int main()
+{
+    int n = 8;
+    float d = 11;
+    int *p1 = &n;
+    printf("指標 p1 指向整數變數 n 的位址:\n");
+    printf("變數 n 的位址: %p\n",(void*)&n);
+    printf("指標 p1 的值: %p\n",(void*)p1);
+    printf("指標 p1 佔有的記憶體: %d\n",sizeof(p1));
+
+    float *p2 = &d;
+    printf("指標 p2 指向浮點變數 d 的位址:\n");
+    printf("變數 d 的位址: %p\n",(void*)&d);
+    printf("指標 p2 的值: %p\n",(void*)p2);
+    printf("指標 p2 佔有的記憶體: %d\n",sizeof(p2));
+
+    return 0;
+}
+
+//宣告整數變數n=5，指標p指向n的位址，改變指標p指向的記憶體內容為8，顯示整數變數n的值。
+
+int main()
+{
+    int n = 5;
+    int *p = &n;
+    printf("變數 n 的值: %d\n",n);
+    printf("指標 p 指向的記憶體內容: %d\n",*p);
+
+    *p = 8;
+    printf("改變指標 p 指向的記憶體內容為: %d\n",*p);
+    printf("改變後變數 n 的值: %d\n",n);
+
+    return 0;
+}*/
+
+//讓使用者輸入兩個變數值，建立傳址呼叫的函式來交換兩個變數值。
+
+void change(int *, int *);
+int main()
+{
+    int a,b;
+    printf("請輸入變數 a 值: ");
+    scanf("%d",&a);
+    printf("請輸入變數 b 值: ");
+    scanf("%d",&b);
+    change(&a,&b);
+    printf("交換後 a = %d b = %d\n",a,b);
+
+    return 0;
+}
+
+void change(int *a , int *b)
+{
+    printf("交換前 a = %d b = %d\n",*a,*b);
+    int x;
+    x = *a;
+    *a = *b;
+    *b = x;
 }
