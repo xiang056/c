@@ -1425,7 +1425,7 @@ int main()
     a += 20;
     *b +=20;
     printf("函式中最後形式參數: a = %d, b = %d\n",a,*b);
- }*/
+ }
 
  //使用回傳指標函式將傳入的參數值加20後傳回。
 
@@ -1447,3 +1447,223 @@ int main()
     *a += 20;
     return a;
  }  
+
+ //將int及double指標變數作加減運算，觀察指標變數的記憶體變化。 8/19
+
+ int main()
+ {
+    int n = 5;
+    double d = 5.4;
+    int *p1=&n;
+    printf("int 型別指標 p1 位址: %p\n",(void*)p1);
+    printf("++p1 位址: %p\n",(void*)(++p1)); //指標變數加1，右移4Bytes
+    printf("--p1 位址: %p\n",(void*)(--p1));
+    printf("p1+=3 位址: %p\n",(void*)(p1 += 3));//右移12Bytes
+
+    double *p2=&d;
+    printf("double 型別指標 p2 位址: %p\n",(void*)p2);
+    printf("++p2 位址: %p\n",(void*)++p2); 
+    printf("--p2 位址: %p\n",(void*)--p2); //指標變數-1，左移8Bytes
+    printf("p2+=3 位址: %p\n",(void*)(p2 += 3));//右移24Bytes
+
+    return 0;
+ }
+
+//宣告一整數陣列，顯示陣列元素的位址。
+
+int main()
+{
+    int n[3] = {99,88,77};
+    
+    printf("陣列 n 的位址: %p\n",(void*)n);
+    printf("陣列元素 n[0] 的位址: %p\n",(void*)&n[0]); //必須使用&顯示元素地址，使用n[0]是強制轉型(void*)，編輯器會警告「把一個整數當指標轉型」
+    printf("陣列元素 n[1] 的位址: %p\n",(void*)&n[1]);
+    printf("陣列元素 n[2] 的位址: %p\n",(void*)&n[2]);
+
+    return 0;
+}
+
+//定義三個元素的整數一維陣列，讓使用者輸入三位學生的成績存於陣列中，以指標取得陣列元素值並計算總分。
+
+int main()
+{
+    int scores[3];
+    printf("請輸入第一位同學成績: ");
+    scanf("%d",&scores[0]);
+    printf("請輸入第二位同學成績: ");
+    scanf("%d",&scores[1]);
+    printf("請輸入第三位同學成績: ");
+    scanf("%d",&scores[2]);
+
+    int sum = 0;
+    
+    for (int i = 0; i < 3; i++)
+    {
+        sum += *(scores+i);
+    }
+    
+    printf("班級總成績: %d" ,sum);
+
+    return 0;
+}
+
+//定義三個元素的整數一維陣列，讓使用者輸入三位學生的成績存於陣列中，以指標變數取得陣列元素值以計算總分。
+#define N 3
+
+int main()
+{
+    int socres[N];
+    int sum = 0;
+    for (int i = 0; i < N; i++)
+    {
+        printf("請輸入第%d位學生成績: ",i+1);
+        scanf("%d",&socres[i]);
+        sum += *(socres+i);
+    }
+    printf("班級總成績: %d分\n",sum);
+
+    return 0;
+}
+
+//教師輸入完成績後，才發現誤將80輸入為82，以陣列當作參數，將成績陣列中所有82都替換為80。
+void showall(int *,int );
+void replace(int *,int ,int ,int );
+int main(void)
+{
+    int scorenum , modnum;
+    int scores[] = {98,82,76,89,82,91,82,75};
+    int size = sizeof(scores) / sizeof(scores[0]);
+    printf("被更換的成績: ");
+    scanf("%d",&scorenum);
+    printf("被更換後的成績: ");
+    scanf("%d",&modnum);
+    
+    printf("至換錢全體成績: ");
+    showall(scores,size);
+
+    replace(scores,scorenum,modnum,size);
+    printf("置換後全體成績: ");
+    showall(scores,size);
+
+    return 0;
+}
+void showall(int *a,int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        printf("%d ",*(a+i));
+    }
+    
+    printf("\n");
+}
+void replace(int *a,int s,int m,int n) 
+{
+    for (int i = 0; i < n; i++)
+    {
+        if (*(a+i) == s)
+        {
+            *(a+i) = m;
+        }
+        
+    }
+    
+}
+
+//定義一為字元陣列，分別以陣列與指標方式取得陣列元素內容。
+
+int main()
+{
+    char s[]="JOE";
+    printf("以陣列方式顯示 s 字串\n");
+    for (int i = 0; i < 3; i++)
+    {
+        printf("s[%d] = %c\n",i,s[i]);
+    }
+    
+    printf("以指標方式顯示 s 字串\n");
+    for (int i = 0; i < 3; i++)
+    {
+        printf("*(s+%d) = %c\n",i,*(s+i));
+    }
+
+    return 0;
+}
+
+//當字元陣列內容增加後會覆蓋另一字元的內容，分別顯示兩字元陣列覆蓋前即覆蓋後的位址與內容。
+
+int main()
+{
+    char s1[]="note";
+    char s2[20]="book";
+
+    printf("字串原始內容:\n");
+    printf("s1:儲存位址= %p ，內容= %s\n",(void*)s1,s1);
+    printf("s2:儲存位址= %p ，內容= %s\n",(void*)s2,s2);
+    
+    printf("s2 字串內容改變後:\n");
+    strcpy(s2,"dfgjfkjgre");
+    printf("s1:儲存位址= %p ，內容= %s\n",(void*)s1,s1);
+    printf("s2:儲存位址= %p ，內容= %s\n",(void*)s2,s2);
+
+    return 0;
+}
+
+//分別使用二維字元陣列及指標陣列建立字串陣列並初始化，顯示兩者的字串內容及位址，以便觀察使用的記憶體狀況。
+
+int main()
+{
+    char fruit1[3][11]={"apple","watermelon","banana"};
+    char *fruit2[3]={"apple","watermelon","banana"};
+
+    printf("二維字元陣列:\n");
+    for (int i = 0; i < 3; i++)
+    {
+        printf("第 %d 個元素: %s，",i+1,fruit1[i]);
+        printf("所佔位址: %p\n",(void*)fruit1[i]);
+    }
+    
+    printf("指標陣列:\n");
+    for (int i = 0; i < 3; i++)
+    {
+        printf("第 %d 個元素: %s，",i+1,*(fruit2+i));
+        printf("所佔位址: %p\n",(void*)fruit2[i]);
+    }
+    
+    return 0;
+}
+
+//建立整數雙重指標，顯示整數變數、指標變數及雙重指標的位址及內容。
+
+int main()
+{
+    int n =5;
+    int *p=&n;
+    int **pp=&p;
+
+    printf("整數變數 n: 位址 = %p ，內容 = %d\n",(void*)&n,n);
+    
+    printf("指標變數 p: 位址 = %p ，內容 = %p\n",(void*)&p,(void*)p);
+    printf("      指向變數值 =%d\n",*p);
+
+    printf("雙重指標 pp: 位址 = %p ，內容 =%p\n",(void*)&pp,(void*)pp);
+    printf("   指向指標變數值 =%p，指向變數值 =%d\n",*pp,**pp);
+}*/
+
+//建立二維整數陣列，顯示陣列名稱(雙重指標)、指標變數及陣列元素的位址及內容。
+
+int main()
+{
+    int n[2][3]={{11,12,13},{21,22,23}};
+
+    printf("n: 位址=%p，內容=%p\n",(void*)&n,n);
+    printf("n[0]: 位址=%p，內容=%p\n",(void*)&n[0],n[0]);
+    printf("n[1]: 位址=%p，內容=%p\n",(void*)&n[1],n[1]);
+    printf("n[0][0]: 位址=%p，內容=%d\n",(void*)&n[0][0],n[0][0]);
+    printf("n[0][1]: 位址=%p，內容=%d\n",(void*)&n[0][1],n[0][1]);
+    printf("n[0][2]: 位址=%p，內容=%d\n",(void*)&n[0][2],n[0][2]);
+    printf("n[1][0]: 位址=%p，內容=%d\n",(void*)&n[1][0],n[1][0]);
+    printf("n[1][1]: 位址=%p，內容=%d\n",(void*)&n[1][1],n[1][1]);
+    printf("n[1][2]: 位址=%p，內容=%d\n",(void*)&n[1][2],n[1][2]);
+
+    return 0;
+} 
