@@ -1223,7 +1223,7 @@ int main()
     printf("改變後變數 n 的值: %d\n",n);
 
     return 0;
-}*/
+}
 
 //讓使用者輸入兩個變數值，建立傳址呼叫的函式來交換兩個變數值。
 
@@ -1248,4 +1248,27 @@ void change(int *a , int *b)
     x = *a;
     *a = *b;
     *b = x;
+}*/
+
+// 定義指數一維陣列 n[3]={1,2,3}，以陣列方式及指標方式顯示陣列位址和陣列元素內容。 8/19
+
+int main()
+{
+    int n[3] = {1,2,3};
+    
+    printf("陣列元素        位址         值\n");
+    for (int i = 0; i < 3; i++)
+    {
+        printf("n[%d]        %p  %d\n",i,(void*)&n[i],n[i]);
+    }
+    
+    int *p=n;
+
+    printf("陣列指標        位址        值\n");
+    for (int i = 0; i < 3; i++)
+    {
+        printf("n+%d        %p  %d\n",i,(void*)(p+i),*(p+i));//(*p + i) → 只是 n[0] 加上 i，不是真正的第 i 個元素，因此用*(p+i)
+    }
+    
+    return 0;
 }
