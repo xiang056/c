@@ -1647,7 +1647,7 @@ int main()
 
     printf("雙重指標 pp: 位址 = %p ，內容 =%p\n",(void*)&pp,(void*)pp);
     printf("   指向指標變數值 =%p，指向變數值 =%d\n",*pp,**pp);
-}*/
+}
 
 //建立二維整數陣列，顯示陣列名稱(雙重指標)、指標變數及陣列元素的位址及內容。
 
@@ -1667,3 +1667,97 @@ int main()
 
     return 0;
 } 
+
+//以指標方式存取二為整數陣列，尋找陣列元素中的最大值及最小值。 8/20
+
+int main()
+{
+    int n[2][3]={ {11,12,13} , {21,22,23}};
+    int max,min;
+
+    for (int i = 0; i < 2; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            if (i == 0 && j == 0)
+            {
+                max =n[0][0];
+                min =n[0][0];
+            }
+            
+            else
+            {
+                if (*(*(n+i)+j) > max ) 
+                {
+                    max = *(*(n+i)+j);
+                }
+                
+                if (*(*(n+i)+j) < min)
+                {
+                    min = *(*(n+i)+j);
+                }
+            }
+        }
+    }
+    printf("陣列中最大值: %d\n",max);
+    printf("陣列中最小值: %d\n",min);
+
+    return 0;
+}
+
+//以動態配置記憶體方式輸入兩個整數，計算其成績後顯示結果，並釋放指標變數配置的記憶體空間。
+
+int main()
+{
+    int *p1 =(int *) malloc(sizeof(int)); //動態配置 *p1指標
+    int *p2 =(int *) malloc(sizeof(int));
+
+    printf("輸入第一個數: ");
+    scanf("%d",p1);
+    printf("輸入第二個數: ");
+    scanf("%d",p2);
+
+    printf("%d * %d = %d",*p1,*p2,(*p1) * (*p2));
+    free(p1);
+    free(p2);
+    
+    return 0;
+}*/
+
+//讓使用者輸入一個英文單字，使用動態陣列將大寫字母轉為小寫字母，小寫字母轉為大寫字母，其餘字元不便。
+
+int main()
+{
+    char *p =malloc(31*sizeof(char));//最多30個字母
+
+    printf("輸入英文字母: ");
+    scanf("%30s",p); //%30s 多加30防溢位
+
+    int n =strlen(p);
+
+    for (int i = 0; i < n; i++)
+    {
+       //  if (*(p+i) >= 'A' && *(p+i) <= 'Z')
+        //{
+        //    *(p+i) += 32;
+        //}
+        //else if (*(p+i) >= 'a' && *(p+i) <= 'z')
+        //{
+        //    *(p+i) -= 32;
+        //} 
+       if (isupper(p[i]))
+       {
+            p[i] = tolower(p[i]);
+       }
+       else if (islower(p[i]))
+       {
+            p[i] = toupper(p[i]);
+       }
+       
+    }
+    
+    printf("%s\n",p);
+    free(p);
+
+    return 0;
+}
