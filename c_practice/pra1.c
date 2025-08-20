@@ -1248,7 +1248,7 @@ void change(int *a , int *b)
     x = *a;
     *a = *b;
     *b = x;
-}*/
+}
 
 // 定義指數一維陣列 n[3]={1,2,3}，以陣列方式及指標方式顯示陣列位址和陣列元素內容。 8/19
 
@@ -1269,6 +1269,67 @@ int main()
     {
         printf("n+%d        %p  %d\n",i,(void*)(p+i),*(p+i));//(*p + i) → 只是 n[0] 加上 i，不是真正的第 i 個元素，因此用*(p+i)
     }
+    
+    return 0;
+}
+
+//宣告二為整數陣列 int n[2][3] = { {11,12,13} , {21,22,23} }，利用指標方式計算二為陣列元素的總和。 8/20
+
+int main()
+{
+    int n[2][3] = { {11,12,13} , {21,22,23} };
+    int sum = 0;
+
+    for (int i = 0; i < 2; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            sum += *(*(n+i)+j);
+        }
+    }
+    
+    printf("陣列中元素總和: %d\n",sum);
+
+    return 0;
+}
+
+//以動態配置記憶體方式輸入兩個整數，計算兩數總和後顯示結果，並釋放指標變數配置的記憶體空間。
+
+int main()
+{
+    int *p1 = malloc(sizeof(int));
+    int *p2 = malloc(sizeof(int));
+    
+    printf("請輸入第一個整數: ");
+    scanf("%d",p1);
+    printf("請輸入第二個整數: ");
+    scanf("%d",p2);
+    //int sum = 0;
+    //sum = *p1+*p2;
+    printf("%d + %d = %d",*p1,*p2,*p1+*p2);
+    free(p1);
+    free(p2);
+
+    return 0;
+}*/
+
+//自鍵盤輸入整數n，動態配置大小為n的一為整數列，並自鍵盤輸入陣列元素值後，利用指標加總陣列元素，最後釋放動態陣列記憶體。
+
+int main()
+{
+    int n;
+    printf("輸入陣列元素個素: ");
+    scanf("%d",&n);
+    int *p=malloc(n*(sizeof(int)));
+    int sum =0;
+    for (int i = 0; i < n; i++)
+    {    
+        printf("輸入第 %d 個元素值: ",i+1);
+        scanf("%d",&p[i]);
+        sum += *(p+i);
+    }
+    printf("陣列的元素和: %d",sum);
+    free(p);
     
     return 0;
 }
