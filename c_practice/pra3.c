@@ -1722,7 +1722,7 @@ int main()
     free(p2);
     
     return 0;
-}*/
+}
 
 //讓使用者輸入一個英文單字，使用動態陣列將大寫字母轉為小寫字母，小寫字母轉為大寫字母，其餘字元不便。
 
@@ -1760,4 +1760,116 @@ int main()
     free(p);
 
     return 0;
+}
+
+//定義student結構，以student結構建立結構變數David，並顯示結構中的成員。 8/22
+
+struct  student //定義結構
+{
+    int id;
+    char name[8];
+    int chinese,math,english;
+};
+    
+int main()
+{
+    //宣告結構變數並初始化
+    struct student Edward = {97056,"Edward",80,98,100};
+    {
+        printf("學號: %d\n",Edward.id);
+        printf("姓名: %s\n",Edward.name);
+        printf("國文: %d\n",Edward.chinese);
+        printf("數學: %d\n",Edward.math);
+        printf("英文: %d\n",Edward.english);
+
+        return 0;
+    };
+    
+}
+
+//定義巢狀結構data，結構中以另一個data結構紀錄生日。
+
+struct date //定義結構date
+{
+    int month,day;
+};
+
+int main()
+{
+    struct data //定義巢狀結構data
+    {
+        char name[8];
+        struct date birthday;        
+    }stu={"Edward",{05,06}}; //建立結構變數 stu
+    
+    printf("姓名: %s\n",stu.name);
+    printf("生日: %d 月 %d 日 \n",stu.birthday.month,stu.birthday.day);
+
+    return 0;
+}
+
+//以student成員當作參數傳遞，並以傳值和傳址呼叫觀察參數變化。
+
+struct student //定義結構
+{
+    char name[10];
+    int chinese;
+};
+
+void showall(char[], int);
+void setscore(int *);
+
+int main()
+{
+    struct student Edward = {"王琮翔",60}; //宣告結構變數並初始化
+    showall(Edward.name,Edward.chinese);
+    setscore(&Edward.chinese);
+    printf("\n國文補考後\n");
+    showall(Edward.name,Edward.chinese);
+    
+    return 0;
+}
+
+void showall(char name[],int score)
+{
+    printf("姓名: %s\n",name);
+    printf("國文: %d\n",score);
+}
+
+void setscore(int *score)
+{
+    *score=90; //補考後成績
+}*/
+
+//以student結構當作參數傳遞，觀察參數變化。
+
+struct student
+{
+    char name[10];
+    int chinese;
+};
+
+void show(char[],int);
+void setscore(struct student);
+
+int main()
+{
+    struct student Edward = {"王琮翔",60}; //宣告結構變數並初始化
+    show(Edward.name,Edward.chinese);
+    setscore(Edward);
+    printf("\n國文補考後\n");
+    show(Edward.name,Edward.chinese);
+
+    return 0;
+}
+
+void show(char name[],int chinese)
+{
+    printf("姓名: %s\n",name);
+    printf("國文: %d\n",chinese);
+}
+
+void setscore(struct student stu)
+{
+    stu.chinese = 60;
 }
