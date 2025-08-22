@@ -1311,7 +1311,7 @@ int main()
     free(p2);
 
     return 0;
-}*/
+}
 
 //自鍵盤輸入整數n，動態配置大小為n的一為整數列，並自鍵盤輸入陣列元素值後，利用指標加總陣列元素，最後釋放動態陣列記憶體。
 
@@ -1331,5 +1331,31 @@ int main()
     printf("陣列的元素和: %d",sum);
     free(p);
     
+    return 0;
+}*/
+
+//宣告Rectangle結構，並建立結構浮點數變數Height、Width表示長和寬，輸入舉行的長和寬厚計算其面積。8/22
+
+struct Rectangle
+{
+    float Height;
+    float Width;
+    
+} ;
+
+int main()
+{
+    struct Rectangle rect;
+    
+    printf("輸入長: ");
+    scanf("%f",&rect.Height);
+    
+    printf("輸入寬: ");
+    scanf("%f",&rect.Width);
+
+    float area= rect.Height * rect.Width; 
+
+    printf("面積為: %.2f",area);
+
     return 0;
 }
