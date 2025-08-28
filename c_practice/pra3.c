@@ -1839,7 +1839,7 @@ void showall(char name[],int score)
 void setscore(int *score)
 {
     *score=90; //補考後成績
-}*/
+}
 
 //以student結構當作參數傳遞，觀察參數變化。
 
@@ -1872,4 +1872,72 @@ void show(char name[],int chinese)
 void setscore(struct student stu)
 {
     stu.chinese = 60;
+}*/
+
+//  以結構定義二元樹後，利用二元樹搜尋資料。 8/28
+
+#define nil -1
+#define MaxSize 20
+
+struct treenode
+{
+    int left;
+    char name[12];
+    int right;
+};
+
+int main()
+{
+    struct treenode node [MaxSize] ={ {1,"Micro",2} , {3,"David",4} , {5,"Tom",nil}, {nil,"Amy",nil}
+                                     ,{6,"Iverson",nil} , {7,"Nancy",nil} , {nil,"Harper",nil} };
+
+    char key[12];
+    int p = 0;
+
+    printf("搜尋資料 ");
+    fgets(key, sizeof(key), stdin); // 移除換行符號
+
+    key[strcspn(key, "\n")] = '\0';
+
+    while (p != nil)
+    {
+        if (strcmp(key,node[p].name) == 0)
+        {
+            printf("找到了 %s!\n",key);
+            break;
+        }
+        
+        else if (strcmp(key,node[p].name)<0)
+        {
+            p = node[p].left; //移至左邊的樹
+        }
+        
+        else
+            p = node[p].right; //移至右邊的樹
+    }
+
+    return 0;
+}*/
+
+//enum 列舉型別
+// 示範如何定義列舉型別，並顯示列舉常數的結果
+
+enum Day0fWeek
+{
+    sunday,
+    monday,
+    Tuesday = 5,
+    wednesday,
+    thurday,
+    friday = 5,
+    saturday
+};
+
+int main()
+{
+    printf("Monday 的值= %d\n",monday); //1
+    printf("Saturday 的值= %d\n",saturday);
+    printf("Friday 的值= %d\n",friday);
+
+    return 0;
 }
