@@ -1,0 +1,83 @@
+//成績統計系統
+//功能: 輸入多位學生的成績，計算平均、最高、最低，找出不及格的學生。
+#include <stdio.h>
+
+float avg(int grade[],int n)
+{
+    int sum = 0;
+    for (int i = 0; i < n; i++)
+    {
+        sum += grade[i];
+    }
+    
+    return (float) sum / n; 
+}
+
+int high(int grade[],int n)
+{
+    int max = grade[0];
+    for (int i = 0; i < n; i++)
+    {
+        if (grade[i] > max)
+        {
+            max = grade[i];
+        }
+    }
+    return max;
+}
+
+int low(int grade[],int n)
+{
+    int min = grade[0];
+    for (int i = 0; i < n; i++)
+    {
+        if (grade[i] < min)
+        {
+            min = grade[i];
+        }
+    }
+    return min;
+}
+
+void fail(int grade[],int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        if (grade[i] < 60)
+        {
+            printf("第 %d 位學生不及格\n",i+1);
+        }
+    }
+    
+}
+int main()
+{
+    int std;
+    
+    printf("請輸入共幾位學生: ");
+    scanf("%d",&std);
+    
+    int grade[std];
+    
+    for (int i = 0; i < std; i++)
+    {
+        printf("請輸入第 %d 位學生成績: ",i+1);
+        scanf("%d",&grade[i]);
+    }
+    
+    printf("%d 位學生的成績分別為: ",std);
+    for (int i = 0; i < std; i++)
+    {
+        printf("%d ",grade[i]);
+    }
+    
+    printf("\n平均分數為: %.2f分\n",avg(grade,std));
+
+    printf("最高分為: %d分\n",high(grade,std));
+
+    printf("最低分為: %d分\n",low(grade,std));
+
+    fail(grade,std);
+    
+    return 0;
+}
