@@ -1,0 +1,38 @@
+//九九乘法表進階版
+//功能:印出整齊格式的9x9乘法表，可選擇直式或橫式
+
+#include <stdio.h>
+
+int main()
+{
+    
+    int choice;
+    printf("請選擇格式: 1-橫式,2-直式\n");
+    scanf("%d",&choice);
+
+    if (choice == 1)
+    {
+        for (int i = 1; i <= 9; i++)
+    {
+        for (int j = 1; j <= 9; j++)
+        {
+            printf("%d x %d = %-2d ",i,j,i*j);
+        }
+        printf("\n");
+    }
+    }
+    
+    else
+    {
+        for (int i = 1; i <= 9; i++)
+    {
+        for (int j = 1; j <= 9; j++)
+        {
+            printf("%d x %d = %d \n",i,j,i*j);
+        }
+
+    }
+    }
+   
+    return 0;
+}
