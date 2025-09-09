@@ -1,0 +1,49 @@
+//超商結帳系統
+//功能:可輸入商品價格，總價計算，若購物金額>1000→可打九折。
+
+#include <stdio.h>
+int Total(int arr[],int n)
+{
+    int sum = 0;
+    for (int i = 0; i < n; i++)
+    {
+        sum += arr[i];
+    }
+
+    if (sum > 1000)
+    {
+        return sum *0.9;
+    }
+    
+    else
+    {
+        return sum;
+    }
+    
+}
+
+int main()
+{
+    int product;
+    printf("請輸入共幾件商品: ");
+    scanf("%d",&product);
+    
+    int price[product];
+    for (int i = 0; i < product; i++)
+    {
+        printf("第 %d 件商品價格: ",i+1);
+        scanf("%d",&price[i]);
+    }
+    
+    int sum = 0;
+    for (int i = 0; i < product; i++)
+    {
+        sum += price[i];
+    }
+    
+    int final = Total(price,product);
+    printf("\n商品總原價為: %d元\n",sum);
+    printf("折扣後價格為(滿1000才有): %d元",final);
+    
+    return 0;
+}
