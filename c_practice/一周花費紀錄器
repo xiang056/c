@@ -1,0 +1,51 @@
+//一周花費紀錄器
+//功能:每天輸入花費，最後印出每日花費+總花費，顯示哪一天花最多錢。
+#include <stdio.h>
+
+int main()
+{
+    int spend;
+    int record[7];
+    
+    for (int i = 0; i < 7; i++)
+    {
+        printf("請輸入星期%d花費: ",i+1);
+        scanf("%d",&record[i]);
+    }
+    
+    printf("每日花費\n");
+    for (int i = 0; i < 7; i++)
+    {
+        printf("週%d:%d元 ",i+1,record[i]);
+        
+
+    }
+    
+    int sum = 0;
+    for (int i = 0; i < 7; i++)
+    {
+        sum  += record[i];        
+    }
+    printf("\n總花費為:%d元\n",sum);
+
+    int max = record[0]; //假設花費最多錢為週一
+    for (int i = 0; i < 7; i++)
+    {
+        if (record[i] > max)
+        {
+            max = record[i];
+        }
+    }
+
+    printf("花費最多錢的是週");
+    for (int i = 0; i < 7; i++)
+    {
+        if (max == record[i])
+        {
+            printf("%d\n",i+1);
+            printf("%d元",record[i]);
+        }
+    }
+    
+    return 0;
+}
