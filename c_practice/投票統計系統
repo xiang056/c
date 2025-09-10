@@ -1,0 +1,70 @@
+//投票統計系統
+//功能:多個選項供用戶投票，統計每個選項的票數，顯示得票最多者。
+
+#include <stdio.h>
+
+int Findmax(int votes[],int n)
+{
+    int max = votes[0];
+    
+    for (int i = 1; i < n; i++)
+    {
+        if (votes[i] > max)
+        {
+            max = votes[i];
+        }
+    }
+    return max;
+}
+
+int main()
+{
+    char sports[][20] = { "棒球","籃球","足球"};
+    int vote[] = {0,0,0};
+    int select;
+    
+    printf("可選擇投票選項: ");
+    for (int i = 0; i < 3; i++)
+    {
+        printf("%s ",sports[i]);
+    }
+    
+    printf("\n選擇棒球投1\n選擇籃球選2\n選擇足球選3\n");
+    
+    do
+    {
+        printf("請投票: ");
+        scanf("%d",&select);
+
+        if(select >= 1 && select <= 3)
+        {
+            vote[select-1]++; // 對應選項加票
+            printf("若要結束投票請投0\n");
+        } 
+        else if(select != 0)
+        {
+            printf("輸入錯誤，請重新投票\n");
+        }
+        
+    } while (select != 0);
+    
+    printf("個別獲得票數為: \n");
+    for (int i = 0; i < 3; i++)
+    {
+        printf("%s:%d票\n",sports[i],vote[i]);
+    }
+    
+    
+    int max = Findmax(vote,3);
+    
+    printf("得票最多者: ");
+    for (int i = 0; i < 3; i++)
+    {
+        if (vote[i] == max)
+        {
+            printf("%s ", sports[i]);
+        }
+    }
+    
+    return 0;
+}
