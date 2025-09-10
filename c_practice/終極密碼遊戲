@@ -1,0 +1,38 @@
+//猜數字
+//功能:電腦隨機出一個數，讓玩家一直猜，提示太大或太小直到猜中
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main()
+{
+    srand((unsigned int)time(NULL));
+    int ans = rand() % 100 + 1;
+    int guess;
+
+    do
+    {
+        printf("請猜數字(1~100):");
+        scanf("%d",&guess);
+
+        if (guess == ans)
+        {
+            printf("恭喜猜中！");
+
+            break;
+        }
+        
+        else if (guess > ans)
+        {
+            printf("太大了\n");
+        }
+        
+        else
+        {
+            printf("太小了\n");
+        }
+    } while (guess != ans);
+    
+    return 0;
+}
